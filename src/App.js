@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {HashRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
 import "./css/custome.css";
 import Navbar from "./components/layout/Navbar";
@@ -11,8 +11,7 @@ import UpComing from './components/content/up-coming/UpComing';
 
 function App() {
   return (
-    <React.Fragment>
-      <Router>
+      <HashRouter basename="/">
         <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
           <Navbar />
           <div className="android-content mdl-layout__content">
@@ -26,11 +25,7 @@ function App() {
                 </Switch>
               </div>
             </div>
-
-            
-          
-      </Router>
-    </React.Fragment>
+      </HashRouter>
   );
 }
 

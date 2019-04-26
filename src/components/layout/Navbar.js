@@ -32,7 +32,7 @@ class Navbar extends Component {
           
           <div className="android-navigation-container">
             <nav className="android-navigation mdl-navigation">
-              <NavLink className="mdl-navigation__link mdl-typography--text-uppercase" exact={true} activeClassName="android-link" to="/movie">Now Playing</NavLink>
+              <NavLink className="mdl-navigation__link mdl-typography--text-uppercase" exact={true} activeClassName="android-link" to="/">Now Playing</NavLink>
               <NavLink className="mdl-navigation__link mdl-typography--text-uppercase" activeClassName="android-link" to="/popular">Popular</NavLink>
               <NavLink className="mdl-navigation__link mdl-typography--text-uppercase" activeClassName="android-link" to="/top-rated">Top Rated</NavLink>
               <NavLink className="mdl-navigation__link mdl-typography--text-uppercase" activeClassName="android-link" to="/up-coming">Up Coming</NavLink>
