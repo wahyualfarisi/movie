@@ -25,22 +25,50 @@ body {
 	        flex-direction: row;
 }
 
+.example_e {
+	border: none;
+	background: #404040;
+	color: #ffffff;
+	font-weight: 100;
+	padding: 10px;
+	text-transform: uppercase;
+	border-radius: 6px;
+	display: inline-block;
+	text-decoration: none;
+}
+
+.example_e:hover {
+	color: white;
+	font-weight: 700;
+	letter-spacing: 3px;
+	background: none;
+	-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.8);
+	-moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.8);
+	transition: all 0.3s ease 0s;
+}
+
 .box {
-	margin: 10px;
+	margin: 20px;
 	width: 300px;
 	height: 490px;
 	text-align: center;
-	border-radius: 3px;
+	border-radius: 15px;
 	-webkit-transition: 200ms ease-in-out;
 	-o-transition: 200ms ease-in-out;
 	transition: 200ms ease-in-out;
-	-webkit-box-shadow: 0 0 15px rgba(0,0,0,0.3);
-	        box-shadow: 0 0 15px rgba(0,0,0,0.3);
+	-webkit-box-shadow: 0 0 15px rgba(0,0,0,0.8);
+	        box-shadow: 0 0 15px rgba(0,0,0,0.8);
 }
+
+.box .btn-preview {
+	font-size: 10px;
+}
+
 .box:hover {
-	margin-bottom: -10px;
+	margin-bottom: -30px;
 	-webkit-box-shadow: 0 0 5px rgba(0,0,0,0.7);
-	        box-shadow: 0 0 5px rgba(0,0,0,0.7);
+			box-shadow: 0 0 5px rgba(0,0,0,0.7);
+	
 }
 .box h1 {
 	color: #fff;
@@ -62,11 +90,10 @@ body {
 	text-shadow: 0 0 3px rgba(0,0,0,0.9);
 }
 .poster {
-	width: 130px;
-	height:130px;
-	margin: 120px auto;
+	width: auto;
+	height:110px;
+	margin: 380px auto;
 	position: relative;
-	border-radius: 100px;
 }
 .poster h4 {
 	top: 16px;
@@ -95,101 +122,28 @@ body {
 	background-position: center;
 }
 
-.five {
-	background: url('https://source.unsplash.com/550x520');
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center;
-}
-.six {
-	background: url('https://source.unsplash.com/660x630');
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center;
-}
-.seven {
-	background: url('https://source.unsplash.com/700x770');
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center;
-}
-.eight {
-	background: url('https://source.unsplash.com/880x820');
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center;
-}
-.nine {
-	background: url('https://source.unsplash.com/898x820');
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center;
-}
-.ten {
-	background: url('https://source.unsplash.com/8998x920');
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center;
-}
-.eleven {
-	background: url('https://source.unsplash.com/898x960');
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center;
-}
 
-.tlv {
-	background: url('https://source.unsplash.com/999x888');
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center;
-}
-
-.thirteen {
-	background: url('https://source.unsplash.com/1000x777');
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center;
-}
-
-.ftn {
-	background: url('https://source.unsplash.com/2000x777');
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center;
-}
-
-.fith {
-	background: url('https://source.unsplash.com/2000x1000');
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center;
-}
-.sith {
-	background: url('https://source.unsplash.com/3000x1000');
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center;
-}
-
-.sevth {
-	background: url('https://source.unsplash.com/9000x9000');
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center;
-}
 
 /* POSTER*/
 .p1 {
-	background: #2b5876;  /* fallback for old browsers */
-	background: -webkit-linear-gradient(to right, #4e4376, #2b5876);  /* Chrome 10-25, Safari 5.1-6 */
-	background: -webkit-gradient(linear, left top, right top, from(#4e4376), to(#2b5876));
-	background: -webkit-linear-gradient(left, #4e4376, #2b5876);
-	background: -o-linear-gradient(left, #4e4376, #2b5876);
-	background: linear-gradient(to right, #4e4376, #2b5876); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-	-webkit-box-shadow: 0 0 20px darkblue;
-	        box-shadow: 0 0 20px darkblue;
+	border-radius: 15px;
+	background: rgba(0,0,0,0.6);
+	-webkit-box-shadow: 0 0 30px rgba(0,0,0,0.3);
+	        box-shadow: 0 0 30px rgba(0,0,0,0.3);
 }
+
+.p1:hover{
+	border-radius: 15px;
+	background: rgba(0,0,0,0.6);
+	-webkit-box-shadow: 0 0 30px rgba(0,0,0,0.9);
+			box-shadow: 0 0 30px rgba(0,0,0,0.9);
+}
+h4:hover{
+	font-weight: 700;
+	color: white;
+}
+
+
 
 .p2 {
 	background: #f857a6;  /* fallback for old browsers */
