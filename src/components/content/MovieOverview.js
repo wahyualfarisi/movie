@@ -253,7 +253,7 @@ class MovieOverview extends Component {
                 width: "100%",
                 height: "100%"
               }}
-              src={'https://www.youtube.com/watch?v='+this.state.keyVideo}
+              src={'https://www.youtube.com/embed/'+this.state.keyVideo}
               frameBorder="0"
               allowFullScreen
             />
