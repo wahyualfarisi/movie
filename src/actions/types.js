@@ -6,3 +6,6 @@ export const GET_OVERVIEW_MOVIE = 'GET_OVERVIEW_MOVIE';
 export const OVERVIEW_LOADING = 'OVERVIEW_LOADING';
 
 export const GET_SIMILIAR_MOVIE = 'GET_SIMILIAR_MOVIE';
+
+export const GET_VIDEOS         = 'GET_VIDEOS';
+export const VIDEO_LOADING      = 'VIDEO_LOADING';

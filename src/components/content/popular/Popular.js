@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Card } from "../../../common/Card";
 import {connect} from 'react-redux';
+import queryString from 'query-string';
 
 //action
 import {getPopularMovie, getLoadMoreMovie} from '../../../actions/popularAction';
@@ -10,23 +11,36 @@ class Popular extends Component {
   constructor(props){
     super(props);
     this.state = {
-      page: 1
+      page: null
     }
   }
 
 
-  componentDidMount() {
-   this.props.getPopularMovie();
+
+  componentDidMount = async() => {
+    this._loadAllPopular(); 
   }
+
+  _loadAllPopular = async() => {// func load all popular with parse query string in parameter
+    const parse = queryString.parse(this.props.location.search);
+    let parse2  = parseInt(parse.page);
+    await this.setState({
+      page: parse2 ? parse2 : 1
+    })
+    await this.props.getLoadMoreMovie(parseInt(this.state.page) );
+  }
+
+
 
   _loadMore = async(e) => {
     e.preventDefault();
-
+   
     await this.setState( (prev) => {
       return { page: prev.page + 1 }
     });
 
-    this.props.getLoadMoreMovie(parseInt(this.state.page) )
+    await this.props.getLoadMoreMovie(parseInt(this.state.page) )
+    this.props.history.push('/popular?page='+parseInt(this.state.page)); 
   }
 
   _prevMovie = async (e) => {
@@ -97,7 +111,9 @@ class Popular extends Component {
             {isLoaded ? 'Wait' : 'Populars'} <br />
             {PageInfo}
           </div>
+
         
+
           <div className="wrap">
             {displayContent}
           </div>
