@@ -10,7 +10,7 @@ class Popular extends Component {
   constructor(props){
     super(props);
     this.state = {
-      page: 2
+      page: 1
     }
   }
 
@@ -19,28 +19,32 @@ class Popular extends Component {
    this.props.getPopularMovie();
   }
 
-  _loadMore = (e) => {
+  _loadMore = async(e) => {
     e.preventDefault();
 
-    this.setState( (prev) => {
+    await this.setState( (prev) => {
       return { page: prev.page + 1 }
     });
+    console.log(this.state.page);
     this.props.getLoadMoreMovie(parseInt(this.state.page) )
   }
 
-  _prevMovie = (e) => {
+  _prevMovie = async (e) => {
     e.preventDefault();
 
-    this.setState( (prev) => {
-      return { page: prev.page - 1 }
+    await this.setState( (prev) => {
+      return { 
+        page: prev.page - parseInt(1)
+      }
     });
+    console.log(this.state.page);
     this.props.getLoadMoreMovie(parseInt(this.state.page) )
   }
   
 
 
   render() {
-    let displayContent;
+    let displayContent, buttonPrev;
 
     const {isLoaded, popular} = this.props.popular;
 
@@ -57,8 +61,13 @@ class Popular extends Component {
               title={movie.title}
             />
           );
-          
-        })
+        });
+
+        if(this.state.page >= 2 && this.state.page !== 1 ){
+          buttonPrev = (
+            <button onClick={this._prevMovie} className="btn__loadmore_popular_prev"><i class="fas fa-arrow-left fa-3x"></i></button>
+          );
+        }
         
       }else{
         displayContent = (
@@ -78,12 +87,10 @@ class Popular extends Component {
             {displayContent}
           </div>
 
-          {this.state.page > 3 && (
-            <button onClick={this._prevMovie} className="btn__loadmore_popular_prev">prev</button>
-          )}
+          {buttonPrev}
 
           {!isLoaded && (
-            <button onClick={this._loadMore} className="btn__loadmore_popular_next">Load More</button>
+            <button onClick={this._loadMore} className="btn__loadmore_popular_next"><i class="fas fa-arrow-right fa-3x"></i></button>
           )}
 
         
