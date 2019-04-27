@@ -11,6 +11,7 @@ import TopRated from "./components/content/top-rated/TopRated";
 import NowPlaying from "./components/content/now-playing/NowPlaying";
 import PageNotFound from "./components/content/PageNotFound";
 import UpComing from "./components/content/up-coming/UpComing";
+import MovieOverview from "./components/content/MovieOverview";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
               <Route path="/popular" component={Popular} />
               <Route path="/top-rated" component={TopRated} />
               <Route path="/up-coming" component={UpComing} />
+              <Route path="/overview/:id" component={MovieOverview} />
               <Route component={PageNotFound} />
             </Switch>
           </div>

@@ -32,11 +32,11 @@ class Navbar extends Component {
           
           <div className="android-navigation-container">
             <nav className="android-navigation mdl-navigation">
-              <NavLink className="mdl-navigation__link mdl-typography--text-uppercase" exact={true} activeClassName="android-link" to="/">Now Playing</NavLink>
-              <NavLink className="mdl-navigation__link mdl-typography--text-uppercase" activeClassName="android-link" to="/popular">Popular</NavLink>
-              <NavLink className="mdl-navigation__link mdl-typography--text-uppercase" activeClassName="android-link" to="/top-rated">Top Rated</NavLink>
-              <NavLink className="mdl-navigation__link mdl-typography--text-uppercase" activeClassName="android-link" to="/up-coming">Up Coming</NavLink>
-              <a className="mdl-navigation__link mdl-typography--text-uppercase" href="www.google.com">Wear</a>
+              <NavLink className="mdl-navigation__link mdl-typography--text-uppercase" exact={true} activeClassName="android-link" to="/" style={{ textDecoration: 'none' }} >Now Playing</NavLink>
+              <NavLink className="mdl-navigation__link mdl-typography--text-uppercase" activeClassName="android-link" to="/popular" style={{ textDecoration: 'none' }}>Popular</NavLink>
+              <NavLink className="mdl-navigation__link mdl-typography--text-uppercase" activeClassName="android-link" to="/top-rated" style={{ textDecoration: 'none' }}>Top Rated</NavLink>
+              <NavLink className="mdl-navigation__link mdl-typography--text-uppercase" activeClassName="android-link" to="/up-coming" style={{ textDecoration: 'none' }}>Up Coming</NavLink>
+              <a className="mdl-navigation__link mdl-typography--text-uppercase" href="www.google.com">Wears</a>
             </nav>
           </div>
 

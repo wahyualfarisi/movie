@@ -124,6 +124,10 @@ a img{
     width: 800px;
   }
 
+  nav a {
+    text-decoration: none;
+  }
+
   .android-search-box.is-focused + .android-navigation-container {
     opacity: 0;
     width: 100px;
