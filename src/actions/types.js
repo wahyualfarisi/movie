@@ -1,0 +1,3 @@
+export const POPULAR_LOADING = 'POPULAR_LOADING';
+export const GET_POPULAR = 'GET_POPULAR';
+export const LOAD_MORE_POPULAR = 'LOAD_MORE_POPULAR';

@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Card  = ({urlImage}) => {
+export const Card  = ({urlImage, title = 'no Title'}) => {
     return (
       <div className="box" style={
           { background: 'url('+ urlImage +')',
@@ -10,8 +10,8 @@ export const Card  = ({urlImage}) => {
        }}>
        
         <div className="poster p1">
-            <h4>Avenger - End Game (2019)</h4>
-            <a class="example_e" href="add-website-here" target="_blank" rel="nofollow noopener">Preview</a>
+            <h4>{title}</h4>
+            <a className="example_e" href="add-website-here" target="_blank" rel="nofollow noopener">Overview</a>
         </div>
         
       </div>
