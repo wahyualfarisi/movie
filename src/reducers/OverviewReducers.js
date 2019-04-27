@@ -1,8 +1,9 @@
-import { GET_OVERVIEW_MOVIE, OVERVIEW_LOADING  } from '../actions/types';
+import { GET_OVERVIEW_MOVIE, OVERVIEW_LOADING, GET_SIMILIAR_MOVIE  } from '../actions/types';
 
 const initialState = {
     isLoaded: false,
-    movie: null
+    movie: null,
+    similiars: null
 }
 
 export default function (state= initialState, action) {
@@ -20,6 +21,12 @@ export default function (state= initialState, action) {
             ...state,
             movie: action.payload,
             isLoaded: false
+        }
+
+        case GET_SIMILIAR_MOVIE:
+        return {
+            ...state,
+            similiars: action.payload
         }
 
 

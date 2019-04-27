@@ -25,7 +25,7 @@ class Popular extends Component {
     await this.setState( (prev) => {
       return { page: prev.page + 1 }
     });
-    console.log(this.state.page);
+
     this.props.getLoadMoreMovie(parseInt(this.state.page) )
   }
 
@@ -37,7 +37,6 @@ class Popular extends Component {
         page: prev.page - parseInt(1)
       }
     });
-    console.log(this.state.page);
     this.props.getLoadMoreMovie(parseInt(this.state.page) )
   }
   

@@ -86,14 +86,14 @@ body {
 .single_box {
 	margin: 30px;
 	width: 500px;
-	height: 800px;
+	height: 700px;
 	text-align: center;
 	border-radius: 8px;
 	-webkit-transition: 200ms ease-in-out;
 	-o-transition: 200ms ease-in-out;
 	transition: 200ms ease-in-out;
-	-webkit-box-shadow: 0 0 15px rgba(0,0,0,0.8);
-	        box-shadow: 0 0 15px rgba(0,0,0,0.8);
+	-webkit-box-shadow: 0 0 15px rgba(0,0,0,0.9);
+	        box-shadow: 0 0 15px rgba(0,0,0,0.9);
 }
 
 .content_desc_overview {
@@ -156,6 +156,24 @@ body {
 	margin: 380px auto;
 	position: relative;
 }
+
+.posteroverview {
+	width: auto;
+	height:40px;
+	margin: 50px auto;
+	position: relative;
+	border-radius: 80%;
+}
+
+.posteroverview h4 {
+	top: 16px;
+	color: #fff;
+	position: relative;
+	font-size: 19px;
+	text-align: center;
+	font-weight: 700;
+}
+
 .poster h4 {
 	top: 16px;
 	color: #fff;
@@ -252,14 +270,10 @@ h4:hover{
 }
 
 .p6 {
-	background: #DA22FF;  /* fallback for old browsers */
-	background: -webkit-linear-gradient(to right, #9733EE, #DA22FF);  /* Chrome 10-25, Safari 5.1-6 */
-	background: -webkit-gradient(linear, left top, right top, from(#9733EE), to(#DA22FF));
-	background: -webkit-linear-gradient(left, #9733EE, #DA22FF);
-	background: -o-linear-gradient(left, #9733EE, #DA22FF);
-	background: linear-gradient(to right, #9733EE, #DA22FF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-	-webkit-box-shadow: 0 0 20px violet;
-	        box-shadow: 0 0 20px violet;
+	border-radius: 0px;
+	background: rgba(0,0,0,0.6);
+	-webkit-box-shadow: 0 0 30px rgba(0,0,0,0.3);
+	        box-shadow: 0 0 30px rgba(0,0,0,0.3);
 }
 
 .p7 {
