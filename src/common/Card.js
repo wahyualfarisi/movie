@@ -13,7 +13,7 @@ export const Card  = ({urlImage, title = 'no Title', movieId}) => {
         <div className="poster p1">
             <h4>{title}</h4>
             <div className="wrap_overview">
-                 <Link className="example_e" to={'overview/'+movieId} rel="nofollow noopener" style={{ paddingTop: '10' }}>Overview</Link>
+                 <Link className="example_e" to={'overview/'+movieId} rel="nofollow noopener" style={{ paddingTop: '10', textDecoration: 'none' }}>Overview</Link>
             </div>
             
         </div>

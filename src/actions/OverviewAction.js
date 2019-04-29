@@ -6,6 +6,7 @@ export const getOverviewMovie = (movieId) => {
         dispatch(setLoadingOverView())
         Axios.get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=222e7bb2f5b52cf29c95ea61cc204128&language=en-US`)
             .then(res => {
+                console.log(res.data);
                 dispatch({
                     type: GET_OVERVIEW_MOVIE,
                     payload: res.data

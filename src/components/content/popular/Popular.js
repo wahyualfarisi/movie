@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Card } from "../../../common/Card";
 import {connect} from 'react-redux';
 import queryString from 'query-string';
+import imgNotfound from './../../../img/empty.svg';
 
 //action
 import {getPopularMovie, getLoadMoreMovie} from '../../../actions/popularAction';
@@ -52,12 +53,17 @@ class Popular extends Component {
       }
     });
     this.props.getLoadMoreMovie(parseInt(this.state.page) )
+    if(parseInt(this.state.page) === 1 ){
+      this.props.history.push('/popular');
+    }else{
+      this.props.history.push('/popular?page='+parseInt(this.state.page)); 
+    }
   }
   
 
 
   render() {
-    let displayContent, buttonPrev, PageInfo;
+    let displayContent, buttonPrev, PageInfo, poster;
 
     const {isLoaded, popular} = this.props.popular;
 
@@ -68,11 +74,16 @@ class Popular extends Component {
 
         // console.log(popular)
         displayContent = popular.results.map( (movie) => {
+          if(movie.poster_path === null){
+            poster = imgNotfound;
+          }else{
+            poster = 'https://image.tmdb.org/t/p/w500'+movie.poster_path;
+          }
           return  (
             <Card
               key={movie.id}
               movieId={movie.id}
-              urlImage={'https://image.tmdb.org/t/p/w500'+movie.poster_path}
+              urlImage={poster}
               title={movie.title}
             />
           );
@@ -93,7 +104,7 @@ class Popular extends Component {
         PageInfo = (
           <div style={{fontSize: '20px'}}>
                {this.state.page} of {popular.total_pages} result
-            </div>
+          </div>
         )
         
       }else{

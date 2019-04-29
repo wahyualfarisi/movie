@@ -339,6 +339,7 @@ a img{
 .android-link {
   text-decoration: none;
   color: #8bc34a !important;
+  font-weight: 700;
 }
 
   .android-link:hover {

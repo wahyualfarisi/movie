@@ -12,6 +12,8 @@ import {
 // import Spinner from "../../common/Spinner";
 import StarRatings from "react-star-ratings";
 import { CardRecomendation } from "../../common/Card";
+import RecomendationNotFound from "../../common/RecomendationNotFound";
+import imgNotfound from '../../img/empty.svg';
 // import { Card } from "../../common/Card";
 
 class MovieOverview extends Component {
@@ -27,7 +29,8 @@ class MovieOverview extends Component {
     };    
   }
 
-  componentDidMount = async () => {    
+  componentDidMount = async () => {
+    document.body.scrollTop = 0;    
     const id = this.props.match.params.id;
     await this.props.getOverviewMovie(id);
     await this.props.getRecomendationsMovie(id);
@@ -96,7 +99,8 @@ class MovieOverview extends Component {
         description, 
         genre, 
         videoDisplay, 
-        recomendationDisplay;
+        recomendationDisplay,
+        poster;
 
     const { isLoaded, movie, recomendations, recomendationsload } = this.props.overview;
    
@@ -115,12 +119,18 @@ class MovieOverview extends Component {
         } = movie;
 
         //get posted cover
+        if(poster_path === null){
+          poster = imgNotfound;
+        }else{
+          poster = 'https://image.tmdb.org/t/p/w500'+poster_path;
+        }
+
         OverviewDisplay = (
           <div
             className="single_box"
             style={{
               background:
-                "url('https://image.tmdb.org/t/p/w500" + poster_path + "')",
+                "url('"+ poster +"')",
               backgroundRepeat: "no-repeat",
               backgroundSize: "cover",
               backgroundPosition: "center"
@@ -193,7 +203,11 @@ class MovieOverview extends Component {
 
 //-------------------------------------------RECOMENDATION PAGE--------------------------------------------------------
     if(recomendations.length === 0 || recomendationsload){
-      recomendationDisplay = "";
+      recomendationDisplay = (
+        <Container>
+            <RecomendationNotFound />
+        </Container>
+      );
     }else{
       
       if(Object.keys(recomendations).length > 0){
@@ -209,7 +223,7 @@ class MovieOverview extends Component {
           );
         })
       }else{
-        recomendationDisplay = "Terjadi Masalah";
+        recomendationDisplay = "Something wrong ...";
       }
     }
 
@@ -307,8 +321,11 @@ class MovieOverview extends Component {
         </Modal>
 
         <div>          
-          {!recomendationsload && (
+          {!recomendationsload && recomendations.length !== 0 &&  (
             <h3 className="text-muted">Recomendations</h3>
+          )}
+          {recomendations.length === 0 && (
+            <h3 className="text-muted">There are no recomended movies</h3>
           )}
           <div className="wrap">
             {recomendationDisplay}

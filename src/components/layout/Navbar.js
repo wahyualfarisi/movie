@@ -1,8 +1,36 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 import logo from "./../../img/logo-movie-2.png";
+import {connect} from 'react-redux';
+import {searchMovie} from '../../actions/SearchActions';
+
 
 class Navbar extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      keyword: ''
+    }
+  }
+
+  onChange = (e) => {
+    this.setState({
+      keyword: e.target.value
+    })
+  }
+
+  onSubmit = (e) => {
+    e.preventDefault();
+    if(this.state.keyword.trim() === "") {
+      return false
+    }
+    
+    this.props.searchMovie(this.state.keyword, this.props.history)
+    this.setState({ keyword: '' })
+  }
+
+  
+
   render() {
     return (
         <React.Fragment>
@@ -22,11 +50,15 @@ class Navbar extends Component {
               <i className="material-icons">search</i>
             </label>
             <div className="mdl-textfield__expandable-holder">
+            <form onSubmit={this.onSubmit}>
               <input
                 className="mdl-textfield__input"
                 type="text"
                 id="search-field"
+                onChange={this.onChange}
+                value={this.state.keyword}
               />
+              </form>
             </div>
           </div>
           
@@ -35,8 +67,7 @@ class Navbar extends Component {
               <NavLink className="mdl-navigation__link mdl-typography--text-uppercase" exact={true} activeClassName="android-link" to="/" style={{ textDecoration: 'none' }} >Now Playing</NavLink>
               <NavLink className="mdl-navigation__link mdl-typography--text-uppercase" activeClassName="android-link" to="/popular" style={{ textDecoration: 'none' }}>Popular</NavLink>
               <NavLink className="mdl-navigation__link mdl-typography--text-uppercase" activeClassName="android-link" to="/top-rated" style={{ textDecoration: 'none' }}>Top Rated</NavLink>
-              <NavLink className="mdl-navigation__link mdl-typography--text-uppercase" activeClassName="android-link" to="/up-coming" style={{ textDecoration: 'none' }}>Up Coming</NavLink>
-              <a className="mdl-navigation__link mdl-typography--text-uppercase" href="www.google.com">Wears</a>
+              <a className="mdl-navigation__link mdl-typography--text-uppercase" href="/">Tv Movie</a>
             </nav>
           </div>
 
@@ -70,17 +101,12 @@ class Navbar extends Component {
         <img className="android-logo-image" src={logo} alt="logo"  />
       </span>
       <nav className="mdl-navigation">
-        <NavLink className="mdl-navigation__link" to="/" exact={true} activeClassName="android-link" >Now Playing</NavLink>
-        <NavLink className="mdl-navigation__link" to="/popular" activeClassName="android-link" >Popular</NavLink>
-        <NavLink className="mdl-navigation__link" to="/top-rated" activeClassName="android-link" >Top Rated</NavLink>
-        <a className="mdl-navigation__link" href="www.google.com">Tablets</a>
-        <a className="mdl-navigation__link" href="www.google.com">Wear</a>
-        <a className="mdl-navigation__link" href="www.google.com">TV</a>
-        <a className="mdl-navigation__link" href="www.google.com">Auto</a>
-        <a className="mdl-navigation__link" href="www.google.com">One</a>
-        <a className="mdl-navigation__link" href="www.google.com">Play</a>
+        <span className="mdl-navigation__link" href="www.google.com">Discover</span>
+        <NavLink className="mdl-navigation__link" to="/" exact={true} activeClassName="android-link" style={{ textDecoration: 'none' }} ><i className="fa fa-play-circle" ></i>  Now Playing</NavLink>
+        <NavLink className="mdl-navigation__link" to="/popular" activeClassName="android-link" style={{ textDecoration: 'none' }} ><i className="fa fa-fire" ></i> Popular</NavLink>
+        <NavLink className="mdl-navigation__link" to="/top-rated" activeClassName="android-link" style={{ textDecoration: 'none' }} ><i className="fa fa-star" ></i> Top Rated</NavLink>
         <div className="android-drawer-separator"></div>
-        <span className="mdl-navigation__link" href="www.google.com">Versions</span>
+        <span className="mdl-navigation__link" href="www.google.com">Genre</span>
         <a className="mdl-navigation__link" href="www.google.com">Lollipop 5.0</a>
         <a className="mdl-navigation__link" href="www.google.com">KitKat 4.4</a>
         <a className="mdl-navigation__link" href="www.google.com">Jelly Bean 4.3</a>
@@ -102,4 +128,5 @@ class Navbar extends Component {
   }
 }
 
-export default Navbar;
+
+export default connect(null, { searchMovie }) (withRouter(Navbar));
