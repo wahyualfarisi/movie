@@ -1,15 +1,17 @@
 import React, { Component } from "react";
+import { withRouter } from 'react-router-dom';
 import { Container, Col, Row, Button, Modal } from "react-bootstrap";
 import ReactPlaceholder from "react-placeholder";
 import "react-placeholder/lib/reactPlaceholder.css";
 import { connect } from "react-redux";
 import {
   getOverviewMovie,
-  getSimiliarMovies,
-  getVideosofmovie
+  getVideosofmovie,
+  getRecomendationsMovie
 } from "./../../actions/OverviewAction";
 // import Spinner from "../../common/Spinner";
 import StarRatings from "react-star-ratings";
+import { CardRecomendation } from "../../common/Card";
 // import { Card } from "../../common/Card";
 
 class MovieOverview extends Component {
@@ -23,16 +25,18 @@ class MovieOverview extends Component {
       type: '',
       videoReady: false
     };
+    
   }
 
   componentDidMount = async () => {
     const id = this.props.match.params.id;
     await this.props.getOverviewMovie(id);
-    await this.props.getSimiliarMovies(id);
+    await this.props.getRecomendationsMovie(id);
     await this.props.getVideosofmovie(id);
   };
 
   componentWillReceiveProps = async(nextProps) => {
+    //props video
     let video   = nextProps.overview.video;
     let isVideo = nextProps.overview.isVideo;
     if(video === null || isVideo){
@@ -50,13 +54,15 @@ class MovieOverview extends Component {
       }else{
         this.setState({...this.state})
       }
-    }
-    
+    }  
   }
 
-  _goBack = e => {
-    e.preventDefault();
-    this.props.history.goBack();
+  _goBack = async() => {  
+     const id = this.props.match.params.id;
+     await this.props.getOverviewMovie(id);
+     await this.props.getRecomendationsMovie(id);
+     await this.props.getVideosofmovie(id);
+     this.props.history.goBack();
   };
 
   handleHide = () => {
@@ -65,16 +71,31 @@ class MovieOverview extends Component {
     });
   };
 
-  _showModal = () => {
-    this.setState({
+  _showModal = async() => {
+    await this.setState({
       showModal: true
     });
   };
 
-  render() {
-    let OverviewDisplay, title, description, genre, videoDisplay;
+  onClickRecomendation = async(id) => {
+    this.props.history.push('/overview/'+id);
+    await this.props.getOverviewMovie(id);
+    await this.props.getRecomendationsMovie(id);
+    await this.props.getVideosofmovie(id);
+    
+    
+  }
 
-    const { isLoaded, movie } = this.props.overview;
+  render() {
+    let OverviewDisplay,
+        title,
+        description, 
+        genre, 
+        videoDisplay, 
+        recomendationDisplay;
+
+    const { isLoaded, movie, recomendations, recomendationsload } = this.props.overview;
+   
 
     //movie action
     if (movie === null || isLoaded) {
@@ -144,16 +165,15 @@ class MovieOverview extends Component {
             </Button>
           );
         });
-
-   
+       
       } else {
         OverviewDisplay = <h1>Terjadi Masalah</h1>;
       }
     }
-    //--------------------------------------------------------------
- 
+    
+    
+      // check video trailler
       if (this.state.videoReady) {
-     
           videoDisplay = (
             <Button
                   onClick={this._showModal}
@@ -164,9 +184,30 @@ class MovieOverview extends Component {
                 </Button>
           )
       } else {
-        videoDisplay = "";
+          videoDisplay = "";
       }
-    
+
+//-------------------------------------------RECOMENDATION PAGE--------------------------------------------------------
+    if(recomendations.length === 0 || recomendationsload){
+      recomendationDisplay = "";
+    }else{
+      
+      if(Object.keys(recomendations).length > 0){
+        recomendationDisplay = recomendations.map( movie => {
+          return  (
+            <CardRecomendation
+              key={movie.id}
+              movieId={movie.id}
+              urlImage={'https://image.tmdb.org/t/p/w500'+movie.poster_path}
+              title={movie.title}
+              onClick={() => this.onClickRecomendation(movie.id)}
+            />
+          );
+        })
+      }else{
+        recomendationDisplay = "Terjadi Masalah";
+      }
+    }
 
     return (
       <Container>
@@ -193,7 +234,7 @@ class MovieOverview extends Component {
                 {genre}
 
                 {!isLoaded && (
-                  <Container>
+                  <Container style={{ marginTop: '20px' }}>
                   <Row>
                     <Col md="6" >
                       {videoDisplay}
@@ -201,6 +242,7 @@ class MovieOverview extends Component {
                     <Col md="6">
                      
                       <Button
+                        type="button"
                         onClick={this._goBack}
                         variant="outline-secondary"
                         block
@@ -235,7 +277,7 @@ class MovieOverview extends Component {
           onHide={this.handleHide}
           aria-labelledby="example-modal-sizes-title-sm"
         >
-          <Modal.Header closeButton />
+          
           <Modal.Body
             style={{
               position: "relative",
@@ -260,7 +302,15 @@ class MovieOverview extends Component {
           </Modal.Body>
         </Modal>
 
-        <div className="wrap" />
+        <div>          
+          {!recomendationsload && (
+            <h3 className="text-muted">Recomendations</h3>
+          )}
+          <div className="wrap">
+            {recomendationDisplay}
+          </div>
+        </div>
+      
       </Container>
     );
   }
@@ -272,5 +322,8 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getOverviewMovie, getSimiliarMovies, getVideosofmovie }
-)(MovieOverview);
+  { getOverviewMovie, 
+    getVideosofmovie,
+    getRecomendationsMovie
+  }
+)(withRouter(MovieOverview));

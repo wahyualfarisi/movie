@@ -22,3 +22,24 @@ export const Card  = ({urlImage, title = 'no Title', movieId}) => {
     )
   
 }
+
+export const CardRecomendation  = ({urlImage, title = 'no Title', movieId, onClick}) => {
+    return (
+      <div className="box" style={
+          { background: 'url('+ urlImage +')',
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
+       }}>
+       
+        <div className="poster p1">
+            <h4>{title}</h4>
+            <div className="wrap_overview">
+                 <button onClick={onClick} className="example_e" rel="nofollow noopener" style={{ paddingTop: '10' }}>Overview</button>
+            </div>
+        </div>
+      </div>
+    )
+  
+}
+

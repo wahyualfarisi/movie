@@ -1,3 +1,6 @@
+
+export const IS_LOAD = 'IS_LOAD';
+
 export const POPULAR_LOADING = 'POPULAR_LOADING';
 export const GET_POPULAR = 'GET_POPULAR';
 
@@ -9,3 +12,5 @@ export const GET_SIMILIAR_MOVIE = 'GET_SIMILIAR_MOVIE';
 
 export const GET_VIDEOS         = 'GET_VIDEOS';
 export const VIDEO_LOADING      = 'VIDEO_LOADING';
+
+export const GET_RECOMENDATIONS = 'GET_RECOMENDATIONS';

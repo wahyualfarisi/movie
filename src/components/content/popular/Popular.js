@@ -118,8 +118,9 @@ class Popular extends Component {
             {displayContent}
           </div>
 
-          {buttonPrev}
 
+          
+          {buttonPrev}
           {!isLoaded && (
             <button onClick={this._loadMore} className="btn__loadmore_popular_next"><i className="fas fa-arrow-right fa-3x"></i></button>
           )}

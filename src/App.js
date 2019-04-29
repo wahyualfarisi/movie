@@ -13,6 +13,8 @@ import PageNotFound from "./components/content/PageNotFound";
 import UpComing from "./components/content/up-coming/UpComing";
 import MovieOverview from "./components/content/MovieOverview";
 
+
+
 function App() {
   return (
     <Provider store={store} >
