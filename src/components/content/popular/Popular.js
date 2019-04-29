@@ -18,7 +18,7 @@ class Popular extends Component {
 
 
   componentDidMount = async() => {
-    this._loadAllPopular(); 
+    await this._loadAllPopular(); 
   }
 
   _loadAllPopular = async() => {// func load all popular with parse query string in parameter

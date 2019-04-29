@@ -14,3 +14,6 @@ export const GET_VIDEOS         = 'GET_VIDEOS';
 export const VIDEO_LOADING      = 'VIDEO_LOADING';
 
 export const GET_RECOMENDATIONS = 'GET_RECOMENDATIONS';
+
+export const GET_NOWPLAYING  = 'GET_NOWPLAYING';
+export const NOWPLAYING_LOAD = 'NOWPLAYING_LOAD';

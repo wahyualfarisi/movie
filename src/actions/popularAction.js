@@ -26,7 +26,6 @@ export const getLoadMoreMovie = (page) => {
         dispatch(setPopularLoading());
         Axios.get('https://api.themoviedb.org/3/movie/popular?api_key=222e7bb2f5b52cf29c95ea61cc204128&language=en-US&page='+page)
         .then(res => {
-            console.log(res);
             dispatch({
                 type: GET_POPULAR,
                 payload: res.data

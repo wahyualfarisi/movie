@@ -24,11 +24,10 @@ class MovieOverview extends Component {
       site: '',
       type: '',
       videoReady: false
-    };
-    
+    };    
   }
 
-  componentDidMount = async () => {
+  componentDidMount = async () => {    
     const id = this.props.match.params.id;
     await this.props.getOverviewMovie(id);
     await this.props.getRecomendationsMovie(id);
@@ -37,6 +36,7 @@ class MovieOverview extends Component {
 
   componentWillReceiveProps = async(nextProps) => {
     //props video
+    
     let video   = nextProps.overview.video;
     let isVideo = nextProps.overview.isVideo;
     if(video === null || isVideo){
@@ -55,6 +55,9 @@ class MovieOverview extends Component {
         this.setState({...this.state})
       }
     }  
+
+
+
   }
 
   _goBack = async() => {  
@@ -78,6 +81,7 @@ class MovieOverview extends Component {
   };
 
   onClickRecomendation = async(id) => {
+    
     this.props.history.push('/overview/'+id);
     await this.props.getOverviewMovie(id);
     await this.props.getRecomendationsMovie(id);
@@ -211,7 +215,7 @@ class MovieOverview extends Component {
 
     return (
       <Container>
-        <Row>
+        <Row  >
           <Col md={6}>
             {OverviewDisplay}
             {isLoaded && (
