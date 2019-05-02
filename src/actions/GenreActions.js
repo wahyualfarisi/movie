@@ -2,7 +2,8 @@ import {
   GET_GENRE,
   GENRE_LOAD,
   GET_LIST_GENRE_LOAD,
-  GET_LIST_GENRE
+  GET_LIST_GENRE,
+  SAVE_GENRE
 } from "./types";
 import Axios from "axios";
 
@@ -38,6 +39,12 @@ export const getListbygenre = (id, name, history) => {
           type: GET_LIST_GENRE,
           payload: res.data
         });
+
+        dispatch({
+          type: SAVE_GENRE,
+          payload: name
+        });
+
         history.push("/genre/" + id);
       })
       .catch(err => {
@@ -49,11 +56,11 @@ export const getListbygenre = (id, name, history) => {
   };
 };
 
-export const getListbygenre2 = id => {
+export const getListbygenre2 = (id, page) => {
   return dispatch => {
     dispatch(setLoadList());
     Axios.get(
-      `https://api.themoviedb.org/3/discover/movie?api_key=222e7bb2f5b52cf29c95ea61cc204128&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=${id}`
+      `https://api.themoviedb.org/3/discover/movie?api_key=222e7bb2f5b52cf29c95ea61cc204128&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${id}`
     )
       .then(res => {
         dispatch({

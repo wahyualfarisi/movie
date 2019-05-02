@@ -56,13 +56,14 @@ class NowPlaying extends Component {
   };
 
   render() {
-    let nowPlayingDisplay, pageInfo, buttonPrev, poster;
+    let nowPlayingDisplay, pageInfo, buttonPrev, buttonNext, poster;
     const { nowPlaying, isLoaded } = this.props.nowplaying;
 
     if (nowPlaying === null || isLoaded) {
       nowPlayingDisplay = <Spinner />;
     } else {
       if (Object.keys(nowPlaying).length > 0) {
+        console.log(typeof nowPlaying.total_pages);
         nowPlayingDisplay = nowPlaying.results.map(movie => {
           if (movie.poster_path === null) {
             poster = imgNotfound;
@@ -100,6 +101,17 @@ class NowPlaying extends Component {
           </button>
         );
       }
+
+      if (!isLoaded) {
+        buttonNext = (
+          <button
+            onClick={this._loadMore}
+            className="btn__loadmore_popular_next"
+          >
+            <i className="fas fa-arrow-right fa-3x" />
+          </button>
+        );
+      }
     }
 
     return (
@@ -113,14 +125,7 @@ class NowPlaying extends Component {
           <div className="wrap">{nowPlayingDisplay}</div>
 
           {buttonPrev}
-          {!isLoaded && (
-            <button
-              onClick={this._loadMore}
-              className="btn__loadmore_popular_next"
-            >
-              <i className="fas fa-arrow-right fa-3x" />
-            </button>
-          )}
+          {buttonNext}
         </div>
       </div>
     );
