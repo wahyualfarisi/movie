@@ -22,3 +22,9 @@ export const TOPRATED_LOAD = 'TOPRATED_LOAD';
 
 export const SEARCH_MOVIE = 'SEARCH_MOVIE';
 export const SEARCH_LOAD = 'SEARCH_LOAD';
+
+export const GET_GENRE = 'GET_GENRE';
+export const GENRE_LOAD = 'GENRE_LOAD';
+
+export const GET_LIST_GENRE = 'GET_LIST_GENRE';
+export const GET_LIST_GENRE_LOAD = 'GET_LIST_GENRE_LOAD';
