@@ -92,6 +92,10 @@ class Popular extends Component {
             <button
               onClick={this._prevMovie}
               className="btn__loadmore_popular_prev"
+              style={{
+                border: 'none',
+                backgroundColor: 'white'
+              }}
             >
               <i className="fas fa-arrow-left fa-3x" />
             </button>
@@ -124,6 +128,10 @@ class Popular extends Component {
             <button
               onClick={this._loadMore}
               className="btn__loadmore_popular_next"
+              style={{
+                border: 'none',
+                backgroundColor: 'white'
+              }}
             >
               <i className="fas fa-arrow-right fa-3x" />
             </button>

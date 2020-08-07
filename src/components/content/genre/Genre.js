@@ -22,9 +22,12 @@ class Genre extends Component {
       genreNames: null,
       page: urlPage ? urlPage : 1
     };
+
+    this.myRef = React.createRef();
   }
 
   componentDidMount = async () => {
+    this.myRef.current.scrollTo(0, 0);
     await this._loadMore();
   };
 
@@ -109,6 +112,10 @@ class Genre extends Component {
             <button
               onClick={this._prevMovie}
               className="btn__loadmore_popular_prev"
+              style={{
+                border: 'none',
+                backgroundColor: 'white'
+              }}
             >
               <i className="fas fa-arrow-left fa-3x" />
             </button>
@@ -120,6 +127,10 @@ class Genre extends Component {
             <button
               onClick={this.nextPage}
               className="btn__loadmore_popular_next"
+              style={{
+                border: 'none',
+                backgroundColor: 'white'
+              }}
             >
               <i className="fas fa-arrow-right fa-3x" />
             </button>
@@ -131,7 +142,7 @@ class Genre extends Component {
     }
 
     return (
-      <div className="android-card-container">
+      <div className="android-card-container" ref={this.myRef}>
         <div className="android-more-section">
           <div className="android-section-title mdl-typography--display-1-color-contrast">
             Genre's

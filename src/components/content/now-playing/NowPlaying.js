@@ -96,6 +96,10 @@ class NowPlaying extends Component {
           <button
             onClick={this._prevMovie}
             className="btn__loadmore_popular_prev"
+            style={{
+              border: 'none',
+              backgroundColor: 'white'
+            }}
           >
             <i className="fas fa-arrow-left fa-3x" />
           </button>
@@ -107,6 +111,10 @@ class NowPlaying extends Component {
           <button
             onClick={this._loadMore}
             className="btn__loadmore_popular_next"
+            style={{
+              border: 'none',
+              backgroundColor: 'white'
+            }}
           >
             <i className="fas fa-arrow-right fa-3x" />
           </button>
@@ -118,11 +126,13 @@ class NowPlaying extends Component {
       <div className="android-card-container mdl-grid">
         <div className="android-more-section">
           <div className="android-section-title mdl-typography--display-1-color-contrast">
-            {isLoaded ? "" : "Now Playing"}
+            {isLoaded ? "" : "Now Playings"}
             {pageInfo}
           </div>
 
-          <div className="wrap">{nowPlayingDisplay}</div>
+          <div className="wrap" style={{ paddingBottom: "10px" }}>
+            {nowPlayingDisplay}
+          </div>
 
           {buttonPrev}
           {buttonNext}
