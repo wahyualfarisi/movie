@@ -76,7 +76,7 @@ body {
   width: 300px;
   height: 490px;
   text-align: center;
-  border-radius: 15px;
+  border-radius: 10px;
   -webkit-transition: 200ms ease-in-out;
   -o-transition: 200ms ease-in-out;
   transition: 200ms ease-in-out;
@@ -109,7 +109,7 @@ body {
     width: 300px;
     height: 490px;
     text-align: center;
-    border-radius: 8px;
+    border-radius: 3px;
     -webkit-transition: 200ms ease-in-out;
     -o-transition: 200ms ease-in-out;
     transition: 200ms ease-in-out;

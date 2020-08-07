@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { searchMovie } from "../../actions/SearchActions";
 import { getGenre, getListbygenre } from "../../actions/GenreActions";
 import { Button } from "react-bootstrap";
+import apiImage from './../../img/api-source.jpg'
 
 class Navbar extends Component {
   constructor(props) {
@@ -163,6 +164,16 @@ class Navbar extends Component {
             </span>
             {displayGenre}
             <div className="android-drawer-separator" />
+            <div style={{
+              textAlign: 'center',
+              padding: '10px'
+            }}>
+              <h6 style={{
+                fontWeight: 'bold'
+              }}>API PROVIDED BY</h6>
+              <img src={apiImage} alt="Api Source DB" width="50%" />
+            </div>
+            
           </nav>
         </div>
       </React.Fragment>

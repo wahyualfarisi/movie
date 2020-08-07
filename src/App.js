@@ -6,6 +6,7 @@ import { Provider } from "react-redux";
 import "./App.css";
 import "./css/custome.css";
 import Navbar from "./components/layout/Navbar";
+
 import Popular from "./components/content/popular/Popular";
 import TopRated from "./components/content/top-rated/TopRated";
 import NowPlaying from "./components/content/now-playing/NowPlaying";
@@ -33,6 +34,7 @@ function App() {
               <Route component={PageNotFound} />
             </Switch>
           </div>
+          
         </div>
       </HashRouter>
     </Provider>
