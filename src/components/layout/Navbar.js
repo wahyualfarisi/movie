@@ -40,6 +40,7 @@ class Navbar extends Component {
   };
 
   render() {
+    
     let displayGenre;
     const { isLoaded, genre } = this.props.genre;
 
