@@ -63,7 +63,6 @@ class NowPlaying extends Component {
       nowPlayingDisplay = <Spinner />;
     } else {
       if (Object.keys(nowPlaying).length > 0) {
-        console.log(typeof nowPlaying.total_pages);
         nowPlayingDisplay = nowPlaying.results.map(movie => {
           if (movie.poster_path === null) {
             poster = imgNotfound;
@@ -126,7 +125,7 @@ class NowPlaying extends Component {
       <div className="android-card-container mdl-grid">
         <div className="android-more-section">
           <div className="android-section-title mdl-typography--display-1-color-contrast">
-            {isLoaded ? "" : "Now Playings"}
+            {isLoaded ? "" : "Now Playing"}
             {pageInfo}
           </div>
 

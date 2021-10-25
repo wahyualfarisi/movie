@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { NavLink, withRouter } from "react-router-dom";
-import logo from "./../../img/logo-movie-2.png";
+import logo from "./../../img/movie.svg";
 import { connect } from "react-redux";
 import { searchMovie } from "../../actions/SearchActions";
 import { getGenre, getListbygenre } from "../../actions/GenreActions";
